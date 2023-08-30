@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "olx-message-sender"
+version = "0.1.0"
+description = ""
+authors = ["C-Hurtmann <constantine2903@gmail.com>"]
+readme = "README.md"
+packages = [{include = "olx_message_sender"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
