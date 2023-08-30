@@ -9,6 +9,7 @@ packages = [{include = "olx_message_sender"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 selenium = "^4.11.2"
+webdriver-manager = "^4.0.0"
 
 
 [build-system]
