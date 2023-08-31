@@ -36,7 +36,7 @@ class OLXParser:
         self.driver.get(self.root_url)
         elements = self.driver.find_elements(By.XPATH, '//div[@class="mheight tcenter"]//a')
         self.gathered_urls = [elem.get_attribute("href") for elem in elements[:n]]
-    
+
     def send_message_to_seller(self, url, message):
         self.driver.get(url)
         
