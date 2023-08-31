@@ -77,5 +77,5 @@ if __name__ == '__main__':
     parser.add_cookies_from_file('cookies.json')
     parser.gather_n_urls_from_main_page(10)
     parser.save_gathered_urls('urls.txt')
-    parser.send_message_to_gathered_sellers()
+    parser.send_message_to_gathered_sellers('Доброго дня')
     parser.tear_down()
