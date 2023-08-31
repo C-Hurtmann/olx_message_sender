@@ -84,6 +84,7 @@ if __name__ == '__main__':
         parser.save_gathered_urls('urls.txt')
         parser.send_message_to_gathered_sellers('Доброго дня')
     except:
+        print('Something wents wrong')
         parser.parse_current_page()
     finally:
         parser.tear_down()
