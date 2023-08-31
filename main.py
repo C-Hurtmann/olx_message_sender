@@ -31,6 +31,10 @@ class OLXParser:
             cookies = json.load(f)
         
         self.add_cookies(cookies)
+    
+    def parse_current_page(self):
+        with open('page.html', 'w') as f:
+            f.write(self.driver.page_content)
 
     def gather_n_urls_from_main_page(self, n):
         self.driver.get(self.root_url)
@@ -54,6 +58,7 @@ class OLXParser:
             EC.element_to_be_clickable((By.XPATH, '//button[@aria-label="Submit message"]'))
             )
         submit_message_button.click()
+        print('Message has been sent')
 
     def send_message_to_gathered_sellers(self, message):
         for url in self.gathered_urls:
@@ -72,10 +77,13 @@ if __name__ == '__main__':
     options.add_argument(f"User-Agent={user_agent}")
     
     driver = webdriver.Chrome(options=options)
-    
-    parser = OLXParser(driver)
-    parser.add_cookies_from_file('cookies.json')
-    parser.gather_n_urls_from_main_page(10)
-    parser.save_gathered_urls('urls.txt')
-    parser.send_message_to_gathered_sellers('Доброго дня')
-    parser.tear_down()
+    try:
+        parser = OLXParser(driver)
+        parser.add_cookies_from_file('olx_cookies.json')
+        parser.gather_n_urls_from_main_page(10)
+        parser.save_gathered_urls('urls.txt')
+        parser.send_message_to_gathered_sellers('Доброго дня')
+    except:
+        parser.parse_current_page()
+    finally:
+        parser.tear_down()
